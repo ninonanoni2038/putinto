@@ -1,0 +1,29 @@
+<nav>
+	<div class="inner-nav">
+		<a class="logo" href="/">
+			<%# <img src="/assets/images/counting_stars_logo2.png"> %>
+		</a>
+		<div class="left">
+				<div class="mypage">
+					<a href="/member/<%= Member.find(session[:member]).id %>"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> <%= Member.find(session[:member]).name %></a>
+				</div>
+				<a href="/member/signout">Signout</a>
+		</div>
+	</div>
+</nav>
+<form action="/member/new" method="post" enctype="multipart/form-data" class="new">
+  <textarea name="want"cols="40" rows="10" placeholder="何をしようとして？&#13;&#10;&#13;&#10;例&#13;&#10;カウント教科書のP10をやろうとして&#13;&#10;SNSでのユーザー登録機能を作ろうとして"></textarea><br>
+  <textarea name="timing" cols="40" rows="10" placeholder="どのタイミングで？&#13;&#10;&#13;&#10;例&#13;&#10;教科書のコードを書き写してアプリ起動したタイミングで&#13;&#10;ユーザー登録ボタンをおしたタイミングで"></textarea><br>
+  <textarea name="detail" cols="40" rows="10" placeholder="どういうエラーがでた？どういう問題がおきた？&#13;&#10;&#13;&#10;例&#13;&#10;スクリーンショットのようにTread 1:signal SIGABRTというエラーがでた&#13;&#10;画面は遷移してくれるけどユーザー登録ができていない"></textarea><br>
+  <textarea name="challenge" cols="40" rows="10" placeholder="予測したこと。試してみたこと&#13;&#10;&#13;&#10;例&#13;&#10;関連付けを確認したけどよくわからなかった&#13;&#10;firebaseを確認してみたけど見方がよくわからない"></textarea><br>
+	<input type="text" name="article" class="new-page_input" placeholder="参考にした記事（URL）"><br>
+	スクリーンショット→<input type="file" name="file[]" multiple="multiple"　accept="image/*"class="new-page_input"> <br>
+	<div>
+	<input type="radio" name="rank" value="1" checked="checked">1
+	<input type="radio" name="rank" value="2">2
+	<input type="radio" name="rank" value="3">3
+	<input type="radio" name="rank" value="4">4
+	<input type="radio" name="rank" value="5">5
+	</div><br>
+  <input type="submit" value="send" class="send-button">
+</form>

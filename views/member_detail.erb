@@ -11,13 +11,8 @@
 		</div>
 	</div>
 </nav>
-
-<div class="link-to-new-wrapper">
-	<a href="/member/new" class="link-to-new">CREATE NEW QUESTION</a>
-</div>
-<div>
-	<table border="1" cellpadding="6" cellspacing="0">
- <caption>質問一覧</caption>
+<table border="1" cellpadding="6" cellspacing="0">
+ <caption>質問詳細</caption>
   <tr>
     <th>何をしようとして</th>
     <th>どのタイミングで</th>
@@ -25,19 +20,20 @@
 		<th>予測したこと。試してみたこと</th>
 		<th>参考記事</th>
 		<th>重要度</th>
-		<th>詳細</th>
+		<th>画像</th>
   </tr>
-	<% @errors.each do |error| %>
-		<tr>
-			<td><%= error.want %></td>
-			<td><%= error.timing %></td>
-			<td><%= error.detail %></td>
-			<td><%= error.challenge %></td>
-			<td><%= error.article %></td>
-			<td><%= error.rank %></td>
-			<td><a href="/member/detail/<%= error.id %>">詳細を見る</a></td>
-		</tr>
-	<% end %>
+  <tr>
+    <td><%= @error.want %></td>
+    <td><%= @error.timing %></td>
+    <td><%= @error.detail %></td>
+    <td><%= @error.challenge %></td>
+    <td><%= @error.article %></td>
+    <td><%= @error.rank %></td>
+  </tr>
+  <div style="display:flex;">
+    <% @error_images.each do |error_image| %>
+      <img src="<%= error_image.image %>" alt="" width="300px">
+      <p><%= error_image.error_id %></p>
+    <% end %>
+  </div>
 </table>
-
-</div>

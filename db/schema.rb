@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_08_165640) do
+ActiveRecord::Schema.define(version: 2019_10_08_193432) do
 
   create_table "error_images", force: :cascade do |t|
     t.string "image"
@@ -25,10 +25,11 @@ ActiveRecord::Schema.define(version: 2019_10_08_165640) do
     t.text "timing"
     t.text "detail"
     t.text "challenge"
-    t.integer "article"
+    t.string "article"
     t.integer "member_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "rank", default: 1
     t.index ["member_id"], name: "index_errors_on_member_id"
   end
 
