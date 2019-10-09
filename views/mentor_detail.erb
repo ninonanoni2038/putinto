@@ -1,0 +1,47 @@
+<nav>
+	<div class="inner-nav">
+		<a class="logo" href="/">
+			<%# <img src="/assets/images/counting_stars_logo2.png"> %>
+		</a>
+		<div class="left">
+				<div class="mypage">
+					<a href="/mentor/<%= Mentor.find(session[:mentor]).id %>"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> <%= Mentor.find(session[:mentor]).name %></a>
+				</div>
+				<a href="/mentor/signout">Signout</a>
+		</div>
+	</div>
+</nav>
+<table border="1" cellpadding="6" cellspacing="0">
+ <caption>質問詳細</caption>
+  <tr>
+    <th>何をしようとして</th>
+    <th>どのタイミングで</th>
+    <th>何が起きた</th>
+		<th>予測したこと。試してみたこと</th>
+		<th>参考記事</th>
+		<th>重要度</th>
+		<th>画像</th>
+  </tr>
+  <tr>
+    <td><%= Member.find(@error.member_id).name %></td>
+    <td><%= @error.want %></td>
+    <td><%= @error.timing %></td>
+    <td><%= @error.detail %></td>
+    <td><%= @error.challenge %></td>
+    <td><%= @error.article %></td>
+    <td><%= @error.rank %></td>
+  </tr>
+  <div style="display:flex;">
+    <% @error_images.each do |error_image| %>
+      <img src="<%= error_image.image %>" alt="" width="300px">
+      <p><%= error_image.error_id %></p>
+    <% end %>
+  </div>
+</table>
+
+<form action="/mentor/detail/<%= @error.id %>" method="post" enctype="multipart/form-data" class="new">
+<input type="text" name="article" class="new-page_input" placeholder="参考にして欲しい記事（URL）"><br>
+  <textarea name="detail" cols="40" rows="10" placeholder="取り組んで欲しいこと&#13;&#10;&#13;&#10;例&#13;&#10;カウント教科書のP10をよく読んでスペル気にしてみて&#13;&#10;firebaseの登録しっかりできてるか確認してみて"></textarea><br>
+	スクリーンショット→<input type="file" name="file[]" multiple="multiple"　accept="image/*"class="new-page_input"> <br>
+  <input type="submit" value="send" class="send-button">
+</form>

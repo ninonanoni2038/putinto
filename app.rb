@@ -71,7 +71,6 @@ get '/member/new' do
 end
 
 post '/member/new' do
-
   @error = Error.create(want: params[:want], timing: params[:timing],detail: params[:detail],challenge: params[:challenge],article: params[:article],rank: params[:rank],member_id: session[:member])
   files = params[:file]
   files.each do |file|
@@ -81,8 +80,8 @@ post '/member/new' do
       tempfile = img[:tempfile]
       upload = Cloudinary::Uploader.upload(tempfile.path)
       img_url = upload['url']
+      @error_image = ErrorImage.create(image: img_url,error_id:@error.id)
     end
-    @error_image = ErrorImage.create(image: img_url,error_id:@error.id)
   end
   redirect '/member'
 end
@@ -103,10 +102,21 @@ get '/mentor/signin' do
 end
 
 post '/mentor/signin' do
-  erb :mentor_sign_in
+  mentor = Mentor.find_by(name: params[:name])
+  if mentor && mentor.authenticate(params[:password])
+    session[:mentor] = mentor.id
+    puts 'ユーザーいたよ'
+    redirect '/mentor'
+  end
+  puts 'ユーザーいないよ'
+  redirect '/mentor/signin'
 end
 
 get '/mentor/signup' do
+  erb :mentor_sign_up
+end
+
+post '/mentor/signup' do
   img_url = ''
   if params[:file]
     img = params[:file]
@@ -121,10 +131,18 @@ get '/mentor/signup' do
   redirect '/mentor'
 end
 
-post '/mentor/signup' do
-  erb :mentor_sign_up
+get '/mentor/signout' do
+  session[:mentor] = nil
+  redirect '/mentor/signin'
 end
 
 get '/mentor' do
+  @errors = Error.all
   erb :mentor_index
+end
+
+get '/mentor/detail/:id' do
+  @error = Error.find(params[:id])
+  @error_images = ErrorImage.where(error_id: params[:id])
+  erb :mentor_detail
 end

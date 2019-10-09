@@ -1,0 +1,45 @@
+<nav>
+	<div class="inner-nav">
+		<a class="logo" href="/">
+			<%# <img src="/assets/images/counting_stars_logo2.png"> %>
+		</a>
+		<div class="left">
+				<div class="mypage">
+					<a href="/mentor/<%= Mentor.find(session[:mentor]).id %>"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> <%= Mentor.find(session[:mentor]).name %></a>
+				</div>
+				<a href="/mentor/signout">Signout</a>
+		</div>
+	</div>
+</nav>
+
+<div class="link-to-new-wrapper">
+	<a href="/member/new" class="link-to-new">CREATE NEW QUESTION</a>
+</div>
+<div>
+	<table border="1" cellpadding="6" cellspacing="0">
+ <caption>質問一覧</caption>
+  <tr>
+    <th>どのメンバーが</th>
+    <th>何をしようとして</th>
+    <th>どのタイミングで</th>
+    <th>何が起きた</th>
+		<th>予測したこと。試してみたこと</th>
+		<th>参考記事</th>
+		<th>重要度</th>
+		<th>詳細・返信</th>
+  </tr>
+	<% @errors.each do |error| %>
+		<tr>
+      <td><%= Member.find(error.member_id).name %></td>
+			<td><%= error.want %></td>
+			<td><%= error.timing %></td>
+			<td><%= error.detail %></td>
+			<td><%= error.challenge %></td>
+			<td><%= error.article %></td>
+			<td><%= error.rank %></td>
+			<td><a href="/mentor/detail/<%= error.id %>">詳細・返信</a></td>
+		</tr>
+	<% end %>
+</table>
+
+</div>
