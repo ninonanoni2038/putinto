@@ -89,6 +89,8 @@ end
 get '/member/detail/:id' do
   @error = Error.find(params[:id])
   @error_images = ErrorImage.where(error_id: params[:id])
+  @solution = Solution.find_by(error_id: params[:id])
+  @solution_images = SolutionImage.where(solution_id: params[:id])
   erb :member_detail
 end
 
@@ -144,5 +146,23 @@ end
 get '/mentor/detail/:id' do
   @error = Error.find(params[:id])
   @error_images = ErrorImage.where(error_id: params[:id])
+  @solution = Solution.find_by(error_id: params[:id])
+  @solution_images = SolutionImage.where(solution_id: params[:id])
   erb :mentor_detail
+end
+
+post '/mentor/detail/:id' do
+  @solution = Solution.create(article: params[:article],detail: params[:detail],error_id: params[:id],mentor_id: session[:mentor])
+  files = params[:file]
+  files.each do |file|
+    img_url = ''
+    if file
+      img = file
+      tempfile = img[:tempfile]
+      upload = Cloudinary::Uploader.upload(tempfile.path)
+      img_url = upload['url']
+      @solution_image = SolutionImage.create(image: img_url,solution_id:@solution.id)
+    end
+  end
+  erb :mentor_index
 end

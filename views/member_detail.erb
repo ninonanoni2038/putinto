@@ -4,6 +4,7 @@
 			<%# <img src="/assets/images/counting_stars_logo2.png"> %>
 		</a>
 		<div class="left">
+        <a href="/member">Topに戻る</a>
 				<div class="mypage">
 					<a href="/member/<%= Member.find(session[:member]).id %>"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> <%= Member.find(session[:member]).name %></a>
 				</div>
@@ -37,3 +38,25 @@
     <% end %>
   </div>
 </table>
+
+<% if @solution %>
+  <table border="1" cellpadding="6" cellspacing="0">
+  <caption>返信詳細</caption>
+    <tr>
+      <th>参考記事</th>
+      <th>取り組んで欲しいこと</th>
+      <th>メンター名</th>
+    </tr>
+    <tr>
+      <td><%= @solution.article %></td>
+      <td><%= @solution.detail %></td>
+      <td><%= Mentor.find(@solution.mentor_id).name %></td>
+    </tr>
+    <div style="display:flex;">
+      <% @solution_images.each do |solution_image| %>
+        <img src="<%= solution_image.image %>" alt="" width="300px">
+        <p><%= solution_image.solution_id %></p>
+      <% end %>
+    </div>
+  </table>
+<% end %>
