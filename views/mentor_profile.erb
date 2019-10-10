@@ -1,0 +1,17 @@
+<nav>
+	<div class="inner-nav">
+		<a class="logo" href="/">
+			<%# <img src="/assets/images/counting_stars_logo2.png"> %>
+		</a>
+		<div class="left">
+        <a href="/mentor">Topに戻る</a>
+				<div class="mypage">
+					<a href="/mentor/<%= Mentor.find(session[:mentor]).id %>"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> <%= Mentor.find(session[:mentor]).name %></a>
+				</div>
+				<a href="/mentor/signout">Signout</a>
+		</div>
+	</div>
+</nav>
+
+<img src="<%= Mentor.find(session[:mentor]).image %>" alt="" width="300px">
+<h1><%= Mentor.find(session[:mentor]).name %></h1>

@@ -67,7 +67,7 @@ get '/member' do
 end
 
 get '/member/new' do
-  erb :member_new
+  erb :member_new_question
 end
 
 post '/member/new' do
@@ -86,12 +86,17 @@ post '/member/new' do
   redirect '/member'
 end
 
-get '/member/detail/:id' do
+get '/member/question/:id' do
   @error = Error.find(params[:id])
   @error_images = ErrorImage.where(error_id: params[:id])
   @solution = Solution.find_by(error_id: params[:id])
   @solution_images = SolutionImage.where(solution_id: params[:id])
-  erb :member_detail
+  erb :member_question_detail
+end
+
+get '/member/:id' do
+
+  erb :member_profile
 end
 
 
@@ -143,12 +148,12 @@ get '/mentor' do
   erb :mentor_index
 end
 
-get '/mentor/detail/:id' do
+get '/mentor/solution/:id' do
   @error = Error.find(params[:id])
   @error_images = ErrorImage.where(error_id: params[:id])
   @solution = Solution.find_by(error_id: params[:id])
   @solution_images = SolutionImage.where(solution_id: params[:id])
-  erb :mentor_detail
+  erb :mentor_solution_detail
 end
 
 post '/mentor/detail/:id' do
@@ -165,4 +170,9 @@ post '/mentor/detail/:id' do
     end
   end
   erb :mentor_index
+end
+
+get '/mentor/:id' do
+
+  erb :mentor_profile
 end

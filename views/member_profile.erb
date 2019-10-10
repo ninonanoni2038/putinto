@@ -1,0 +1,17 @@
+<nav>
+	<div class="inner-nav">
+		<a class="logo" href="/">
+			<%# <img src="/assets/images/counting_stars_logo2.png"> %>
+		</a>
+		<div class="left">
+        <a href="/member">Topに戻る</a>
+				<div class="mypage">
+					<a href="/member/<%= Member.find(session[:member]).id %>"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> <%= Member.find(session[:member]).name %></a>
+				</div>
+				<a href="/member/signout">Signout</a>
+		</div>
+	</div>
+</nav>
+
+<img src="<%= Member.find(session[:member]).image %>" alt="" width="300px">
+<h1><%= Member.find(session[:member]).name %></h1>

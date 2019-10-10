@@ -27,14 +27,14 @@
   </tr>
 	<% @errors.each do |error| %>
 		<tr>
-      <td><%= Member.find(error.member_id).name %></td>
+      <td><img src="<%= Member.find(error.member_id) .image%>" alt="" width="300px"><%= Member.find(error.member_id).name %></td>
 			<td><%= error.want %></td>
 			<td><%= error.timing %></td>
 			<td><%= error.detail %></td>
 			<td><%= error.challenge %></td>
 			<td><%= error.article %></td>
 			<td><%= error.rank %></td>
-			<td><a href="/mentor/detail/<%= error.id %>">詳細・返信</a></td>
+			<td><a href="/mentor/solution/<%= error.id %>">詳細・返信</a></td>
 		</tr>
 	<% end %>
 </table>
