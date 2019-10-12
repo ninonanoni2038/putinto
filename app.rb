@@ -13,6 +13,19 @@ before do
     config.api_key = ENV['CLOUDINARY_API_KEY']
     config.api_secret = ENV['CLOUDINARY_API_SECRET']
   end
+
+  if session[:member] == nil
+    if request.path_info[0..6] == "/member" and request.path_info != "/member/signin" and request.path_info != "/member/signup"
+      redirect '/member/signin'
+    end
+  end
+
+  if session[:mentor] == nil
+    if request.path_info[0..6] == "/mentor" and request.path_info != "/mentor/signin" and request.path_info != "/mentor/signup"
+      redirect '/mentor/signin'
+    end
+  end
+
 end
 
 get '/' do
@@ -73,14 +86,16 @@ end
 post '/member/new' do
   @error = Error.create(want: params[:want], timing: params[:timing],detail: params[:detail],challenge: params[:challenge],article: params[:article],rank: params[:rank],member_id: session[:member])
   files = params[:file]
-  files.each do |file|
-    img_url = ''
-    if file
-      img = file
-      tempfile = img[:tempfile]
-      upload = Cloudinary::Uploader.upload(tempfile.path)
-      img_url = upload['url']
-      @error_image = ErrorImage.create(image: img_url,error_id:@error.id)
+  if files
+    files.each do |file|
+      img_url = ''
+      if file
+        img = file
+        tempfile = img[:tempfile]
+        upload = Cloudinary::Uploader.upload(tempfile.path)
+        img_url = upload['url']
+        @error_image = ErrorImage.create(image: img_url,error_id:@error.id)
+      end
     end
   end
   redirect '/member'

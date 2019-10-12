@@ -1,0 +1,94 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing:border-box;
+}
+.main-box{
+  margin: 0 168px 0 168px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.left-box{
+  margin-top: 80px;
+  width: 50%;
+  border-right: 1px solid #242424;
+}
+
+.user-info{
+  width: 90%;
+  display: flex;
+}
+.user-image{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+.user-name{
+  font-family: 'Noto Sans JP',sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 40px;
+  margin-left: 8px;
+}
+
+.error-images{
+  display:flex;
+  margin-top: 32px;
+  width: 90%;
+  overflow:hidden;
+}
+.error-contents{
+  margin-top: 56px;
+}
+.title{
+  width: 90%;
+  height: 44px;
+  border-bottom: 2px solid #646464;
+  font-family: 'Noto Sans JP',sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 36px;
+}
+.text{
+  width: 90%;
+  margin-top: 8px;
+  font-family: 'Noto Sans JP',sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  margin-bottom: 32px;
+}
+
+.right-box{
+  margin: 80px 0 0 40px;
+  width: 50%;
+}
+
+.textarea{
+  margin-top: 8px;
+  width: 90%;
+  height: 120px;
+  margin-bottom: 32px;
+}
+.main-button{
+  display: block;
+  width: 240px;
+  height: 40px;
+  background: #33cccc;
+  border-radius: 8px;
+  margin: 0 auto;
+  margin-top: 32px;
+  line-height: 40px;
+  text-align: center;
+  text-decoration: none;
+
+  font-family: Noto Sans CJK JP;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  color: #ffffff;
+}

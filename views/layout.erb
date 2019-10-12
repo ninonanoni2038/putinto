@@ -36,6 +36,28 @@
     <link rel="stylesheet" href="/assets/css/member_new_question.css">
   <% end %>
 
+  <% if request.path_info[0..7] == "/member/" %>
+    <link rel="stylesheet" href="/assets/css/nav.css">
+    <link rel="stylesheet" href="/assets/css/member_profile.css">
+  <% end %>
+
+  <% if request.path_info == "/mentor" %>
+    <link rel="stylesheet" href="/assets/css/nav.css">
+    <link rel="stylesheet" href="/assets/css/mentor_index.css">
+  <% end %>
+
+  <% if request.path_info[0..16] == "/mentor/solution/" %>
+    <link rel="stylesheet" href="/assets/css/nav.css">
+    <link rel="stylesheet" href="/assets/css/mentor_solution_detail.css">
+  <% end %>
+
+  <% if request.path_info[0..7] == "/mentor/" %>
+    <link rel="stylesheet" href="/assets/css/nav.css">
+    <link rel="stylesheet" href="/assets/css/mentor_profile.css">
+  <% end %>
+
+
+
   <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP:100,300,400,500,700,900&display=swap" rel="stylesheet">
 </head>
 <body>

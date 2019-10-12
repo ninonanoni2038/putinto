@@ -21,8 +21,11 @@
 			<h2 class="title">何がおきた？</h2>
 			<textarea name="detail" placeholder="どういうエラーがでた？どういう問題がおきた？&#13;&#10;&#13;&#10;例&#13;&#10;スクリーンショットのようにTread 1:signal SIGABRTというエラーがでた&#13;&#10;画面は遷移してくれるけどユーザー登録ができていない" class="textarea"></textarea><br>
 
-			<h2 class="title">スクリーンショット</h2>
-			<input type="file" name="file[]" multiple="multiple"　accept="image/*"class="file""> <br>
+			<h2 class="title">スクリーンショット(複数枚可)</h2>
+			<label for="file_upload">
+			<input type="file" name="file[]" multiple="multiple"　accept="image/*" class="file">
+			</label>
+			<br>
 			<input type="submit" value="send" class="main-button">
 		</div>
 		<div class="right-box">
@@ -35,9 +38,13 @@
 			<h2 class="title">重要度</h2>
 			<input type="radio" name="rank" value="1" checked="checked" class="radio">1
 			<input type="radio" name="rank" value="2" class="radio">2
-			<input type="radio" name="rank" value="3" class="radio">3
-			<input type="radio" name="rank" value="4" class="radio">4
-			<input type="radio" name="rank" value="5" class="radio">5<br>
+			<input type="radio" name="rank" value="3" class="radio">3<br>
+			<p>
+			<br>
+			1:自力で解決できるかもしれない。<br>
+			2:他にできることはあるけど、この問題にすぐに直面しそう。<br>
+			3:今すぐ解決したい。解決しないと先に進まない。<br>
+			</p>
 
 			<input type="submit" value="send" class="main-button">
 		</div>

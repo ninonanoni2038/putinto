@@ -1,17 +1,15 @@
 <nav>
 	<div class="inner-nav">
-		<a class="logo" href="/">
-			<%# <img src="/assets/images/counting_stars_logo2.png"> %>
+		<a class="logo" href="/member">
+			Putinto
 		</a>
-		<div class="left">
-        <a href="/member">Topに戻る</a>
-				<div class="mypage">
-					<a href="/member/<%= Member.find(session[:member]).id %>"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> <%= Member.find(session[:member]).name %></a>
-				</div>
-				<a href="/member/signout">Signout</a>
+		<div class="right">
+			<a href="/member/<%= Member.find(session[:member]).id %>" class="nav-text"><%= Member.find(session[:member]).name %></a>
+			<a href="/member/signout" class="nav-text">Signout</a>
 		</div>
 	</div>
 </nav>
-
-<img src="<%= Member.find(session[:member]).image %>" alt="" width="300px">
-<h1><%= Member.find(session[:member]).name %></h1>
+<div class="profile-card">
+	<img src="<%= Member.find(session[:member]).image %>" alt="" class="profile-image">
+	<h1 class="profile-name"><%= Member.find(session[:member]).name %></h1>
+	</div>
