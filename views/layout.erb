@@ -3,8 +3,37 @@
 <head>
   <meta charset="UTF-8">
   <title>Putinto</title>
+  <% if request.path_info == "/" %>
+    <link rel="stylesheet" href="/assets/css/index.css">
+  <% end %>
+
+  <% if request.path_info == "/member/signup" %>
+    <link rel="stylesheet" href="/assets/css/member_sign_up.css">
+  <% end %>
+  <% if request.path_info == "/mentor/signup" %>
+    <link rel="stylesheet" href="/assets/css/mentor_sign_up.css">
+  <% end %>
+
+  <% if request.path_info == "/member/signin" %>
+    <link rel="stylesheet" href="/assets/css/member_sign_in.css">
+  <% end %>
+  <% if request.path_info == "/mentor/signin" %>
+    <link rel="stylesheet" href="/assets/css/mentor_sign_in.css">
+  <% end %>
+
+  <% if request.path_info == "/member" %>
+    <link rel="stylesheet" href="/assets/css/nav.css">
+    <link rel="stylesheet" href="/assets/css/member_index.css">
+  <% end %>
+
+  <% if request.path_info[0..16] == "/member/question/" %>
+    <link rel="stylesheet" href="/assets/css/nav.css">
+    <link rel="stylesheet" href="/assets/css/member_question_detail.css">
+  <% end %>
+
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP:100,300,400,500,700,900&display=swap" rel="stylesheet">
 </head>
-<body style="text-align: center;">
+<body>
   <%= yield %>
 </body>
 </html>

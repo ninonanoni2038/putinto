@@ -1,43 +1,37 @@
 <nav>
 	<div class="inner-nav">
-		<a class="logo" href="/">
-			<%# <img src="/assets/images/counting_stars_logo2.png"> %>
+		<a class="logo" href="/member/">
+			Putinto
 		</a>
-		<div class="left">
-				<div class="mypage">
-					<a href="/member/<%= Member.find(session[:member]).id %>"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> <%= Member.find(session[:member]).name %></a>
-				</div>
-				<a href="/member/signout">Signout</a>
+		<div class="right">
+			<a href="/member/<%= Member.find(session[:member]).id %>" class="nav-text"><%= Member.find(session[:member]).name %></a>
+			<a href="/member/signout" class="nav-text">Signout</a>
 		</div>
 	</div>
 </nav>
-
-<div class="link-to-new-wrapper">
-	<a href="/member/new" class="link-to-new">CREATE NEW QUESTION</a>
-</div>
-<div>
-	<table border="1" cellpadding="6" cellspacing="0">
- <caption>質問一覧</caption>
-  <tr>
-    <th>何をしようとして</th>
-    <th>どのタイミングで</th>
-    <th>何が起きた</th>
-		<th>予測したこと。試してみたこと</th>
-		<th>参考記事</th>
-		<th>重要度</th>
-		<th>詳細</th>
-  </tr>
-	<% @errors.each do |error| %>
-		<tr>
-			<td><%= error.want %></td>
-			<td><%= error.timing %></td>
-			<td><%= error.detail %></td>
-			<td><%= error.challenge %></td>
-			<td><%= error.article %></td>
-			<td><%= error.rank %></td>
-			<td><a href="/member/question/<%= error.id %>">詳細を見る</a></td>
-		</tr>
-	<% end %>
-</table>
-
+<div class="main-box">
+	<div class="top-bar">
+		<a href="/member/new" class="main-button">CREATE NEW QUESTION</a>
+		<img src="/assets/images/rank.png" alt="" class="rank-image">
+	</div>
+	<div class="cards">
+		<% @errors.each do |error| %>
+			<div class="card">
+			<a href="/member/question/<%= error.id %>">
+				<div class="card-contents">
+					<div class="error-box">
+						<p class="card-text want"><%= error.want %></p>
+						<p class="card-text timing"><%= error.timing %></p>
+						<p class="card-text detail"><%= error.detail %></p>
+						<p class="date-and-time"><%= error.created_at %></p>
+					</div>
+					<div class="user-box">
+						<img src="<%= Member.find(error.member_id).image %>" alt="" class="member-image">
+						<p class="member-name"><%= Member.find(error.member_id).name %></p>
+					</div>
+				</div>
+			</div>
+			</a>
+		<% end %>
+	</div>
 </div>

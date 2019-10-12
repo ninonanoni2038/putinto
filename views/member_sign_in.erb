@@ -1,11 +1,13 @@
 <div class="container" id="signin">
-  <div class="content sign">
-    <h2 class="copy">メンバーSIGNIN</h2>
-    <h1 class="logo-wrapper"><img src=""></h1>
+  <div class="sign-in-box">
+    <h1 class="title">メンバーSIGNIN</h1>
     <form class="sign-form" action="/member/signin" method="post">
-      <input type="text" name="name" placeholder="name"><br>
-      <input type="password" name="password" placeholder="password"><br>
-      <input type="submit" value="SIGN IN"><br>
+      <h2 class="form-title">ユーザー名(英数字)</h2>
+      <input type="text" name="name" placeholder="name" class="form"><br>
+
+      <h2 class="form-title">パスワード</h2>
+      <input type="password" name="password" placeholder="password" class="form"><br>
+      <input type="submit" value="SIGN IN" class="main-button"><br>
     </form>
     <a href="/member/signup" class="link">新規登録はこちら</a>
   </div>

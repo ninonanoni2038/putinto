@@ -1,0 +1,39 @@
+*{
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+
+nav{
+  width: 100vw;
+  height: 80px;
+  background-color: #33cccc;
+}
+
+.inner-nav{
+  margin:0 168px 0 168px;
+}
+
+.logo{
+  font-family: 'Noto Sans JP',sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 48px;
+  line-height: 80px;
+  color: #ffffff;
+}
+
+.right{
+  float: right;
+}
+
+.nav-text{
+  font-family: 'Noto Sans JP',sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 80px;
+  color: #ffffff;
+  margin-left: 16px;
+  float: left;
+}

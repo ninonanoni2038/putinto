@@ -1,15 +1,20 @@
 <div class="container" id="signin">
-  <div class="content sign">
-    <h2 class="copy">メンターSIGNUP</h2>
-    <h1 class="logo-wrapper"><img src=""></h1>
-    <form class="sign-form" action="/mentor/signup" method="post" enctype="multipart/form-data">
-      <input type="text" name="name" placeholder="name(英数字)"><br>
-      <input type="file" name="file""><br>
-      <input type="password" name="password" placeholder="password(英数字)"><br>
-      <input type="password" name="password-confirmation" placeholder="password-confirm"><br>
-      <input type="submit" value="SIGN UP"><br>
-    </form>
+    <div class="sign-up-box">
+      <h1 class="title">新規メンター登録</h1>
+        <form class="sign-form" action="/mentor/signup" method="post" enctype="multipart/form-data">
+          <h2 class="form-title">ユーザー名(英数字)</h2>
+          <input type="text" name="name" placeholder="name(英数字)" class="form"><br>
 
-    <a href="/mentor/signin" class="link">すでにアカウントを持っている</a>
-  </div>
+          <h2 class="form-title">プロフィール写真</h2>
+          <input type="file" name="file" class="form"><br>
+
+          <h2 class="form-title">パスワード(英数字4文字以上)</h2>
+          <input type="password" name="password" placeholder="password(英数字)" class="form"><br>
+
+          <h2 class="form-title">パスワード(確認用)</h2>
+          <input type="password" name="password-confirmation" placeholder="password-confirm" class="form"><br>
+
+          <input type="submit" value="SIGN UP" class="main-button"><br>
+        </form>
+    </div>
 </div>

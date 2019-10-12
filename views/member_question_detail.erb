@@ -1,62 +1,49 @@
 <nav>
 	<div class="inner-nav">
-		<a class="logo" href="/">
-			<%# <img src="/assets/images/counting_stars_logo2.png"> %>
+		<a class="logo" href="/member">
+			Putinto
 		</a>
-		<div class="left">
-        <a href="/member">Topに戻る</a>
-				<div class="mypage">
-					<a href="/member/<%= Member.find(session[:member]).id %>"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> <%= Member.find(session[:member]).name %></a>
-				</div>
-				<a href="/member/signout">Signout</a>
+		<div class="right">
+			<a href="/member/<%= Member.find(session[:member]).id %>" class="nav-text"><%= Member.find(session[:member]).name %></a>
+			<a href="/member/signout" class="nav-text">Signout</a>
 		</div>
 	</div>
 </nav>
-<table border="1" cellpadding="6" cellspacing="0">
- <caption>質問詳細</caption>
-  <tr>
-    <th>何をしようとして</th>
-    <th>どのタイミングで</th>
-    <th>何が起きた</th>
-		<th>予測したこと。試してみたこと</th>
-		<th>参考記事</th>
-		<th>重要度</th>
-		<th>画像</th>
-  </tr>
-  <tr>
-    <td><%= @error.want %></td>
-    <td><%= @error.timing %></td>
-    <td><%= @error.detail %></td>
-    <td><%= @error.challenge %></td>
-    <td><%= @error.article %></td>
-    <td><%= @error.rank %></td>
-  </tr>
-  <div style="display:flex;">
+<div class="main-box">
+  <div class="error-images">
     <% @error_images.each do |error_image| %>
-      <img src="<%= error_image.image %>" alt="" width="300px">
-      <p><%= error_image.error_id %></p>
+      <img src="<%= error_image.image %>" alt="" width="348px" height="218px">
     <% end %>
   </div>
-</table>
+  <div class="error-contents">
+    <h2 class="title">何をしようとして？</h2>
+    <p class="text"><%= @error.want %></p>
 
-<% if @solution %>
-  <table border="1" cellpadding="6" cellspacing="0">
-  <caption>返信詳細</caption>
-    <tr>
-      <th>参考記事</th>
-      <th>取り組んで欲しいこと</th>
-      <th>メンター名</th>
-    </tr>
-    <tr>
-      <td><%= @solution.article %></td>
-      <td><%= @solution.detail %></td>
-      <td><%= Mentor.find(@solution.mentor_id).name %></td>
-    </tr>
-    <div style="display:flex;">
+    <h2 class="title">どのタイミングで？</h2>
+    <p class="text"><%= @error.timing %></p>
+
+    <h2 class="title">何が起きた？</h2>
+    <p class="text"><%= @error.detail %></p>
+
+    <h2 class="title">予測したこと。試してみたこと</h2>
+    <p class="text"><%= @error.challenge %></p>
+
+    <h2 class="title">参考記事</h2>
+    <p class="text"><%= @error.article %></p>
+  </div>
+
+  <% if @solution %>
+    <div class="solution-images">
       <% @solution_images.each do |solution_image| %>
-        <img src="<%= solution_image.image %>" alt="" width="300px">
-        <p><%= solution_image.solution_id %></p>
+        <img src="<%= solution_image.image %>" alt="" width="348px" height="218px">
       <% end %>
     </div>
-  </table>
-<% end %>
+    <div class="solution-contents">
+      <h2 class="title">参考記事</h2>
+      <p class="text"><%= @solution.article %></p>
+
+      <h2 class="title">取り組んで欲しいこと</h2>
+      <p class="text"><%= @solution.detail %></p>
+    </div>
+  <% end %>
+</div>
