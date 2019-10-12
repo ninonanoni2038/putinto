@@ -5,8 +5,6 @@
 body{
   background-color: #3cc;
 }
-.container{
-}
 
 .sign-in-box{
   position: relative;
@@ -62,7 +60,7 @@ body{
   text-align: center;
   text-decoration: none;
 
-  font-family: Noto Sans CJK JP;
+  font-family: 'Noto Sans JP',sans-serif;
   font-style: normal;
   font-weight: bold;
   font-size: 12px;

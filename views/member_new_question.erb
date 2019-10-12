@@ -1,6 +1,6 @@
 <nav>
 	<div class="inner-nav">
-		<a class="logo" href="/member/">
+		<a class="logo" href="/member">
 			Putinto
 		</a>
 		<div class="right">
@@ -9,19 +9,37 @@
 		</div>
 	</div>
 </nav>
-<form action="/member/new" method="post" enctype="multipart/form-data" class="new">
-  <textarea name="want"cols="40" rows="10" placeholder="何をしようとして？&#13;&#10;&#13;&#10;例&#13;&#10;カウント教科書のP10をやろうとして&#13;&#10;SNSでのユーザー登録機能を作ろうとして"></textarea><br>
-  <textarea name="timing" cols="40" rows="10" placeholder="どのタイミングで？&#13;&#10;&#13;&#10;例&#13;&#10;教科書のコードを書き写してアプリ起動したタイミングで&#13;&#10;ユーザー登録ボタンをおしたタイミングで"></textarea><br>
-  <textarea name="detail" cols="40" rows="10" placeholder="どういうエラーがでた？どういう問題がおきた？&#13;&#10;&#13;&#10;例&#13;&#10;スクリーンショットのようにTread 1:signal SIGABRTというエラーがでた&#13;&#10;画面は遷移してくれるけどユーザー登録ができていない"></textarea><br>
-  <textarea name="challenge" cols="40" rows="10" placeholder="予測したこと。試してみたこと&#13;&#10;&#13;&#10;例&#13;&#10;関連付けを確認したけどよくわからなかった&#13;&#10;firebaseを確認してみたけど見方がよくわからない"></textarea><br>
-	<input type="text" name="article" class="new-page_input" placeholder="参考にした記事（URL）"><br>
-	スクリーンショット→<input type="file" name="file[]" multiple="multiple"　accept="image/*"class="new-page_input"> <br>
-	<div>
-	<input type="radio" name="rank" value="1" checked="checked">1
-	<input type="radio" name="rank" value="2">2
-	<input type="radio" name="rank" value="3">3
-	<input type="radio" name="rank" value="4">4
-	<input type="radio" name="rank" value="5">5
-	</div><br>
-  <input type="submit" value="send" class="send-button">
-</form>
+<div class="main-box">
+	<form action="/member/new" method="post" enctype="multipart/form-data" class="form-box">
+		<div class="left-box">
+			<h2 class="title">何をしようとして？</h2>
+			<textarea name="want" placeholder="何をしようとして？&#13;&#10;&#13;&#10;例&#13;&#10;カウント教科書のP10をやろうとして&#13;&#10;SNSでのユーザー登録機能を作ろうとして" class="textarea"></textarea><br>
+
+			<h2 class="title">どのタイミングで？</h2>
+			<textarea name="timing" placeholder="どのタイミングで？&#13;&#10;&#13;&#10;例&#13;&#10;教科書のコードを書き写してアプリ起動したタイミングで&#13;&#10;ユーザー登録ボタンをおしたタイミングで" class="textarea"></textarea><br>
+
+			<h2 class="title">何がおきた？</h2>
+			<textarea name="detail" placeholder="どういうエラーがでた？どういう問題がおきた？&#13;&#10;&#13;&#10;例&#13;&#10;スクリーンショットのようにTread 1:signal SIGABRTというエラーがでた&#13;&#10;画面は遷移してくれるけどユーザー登録ができていない" class="textarea"></textarea><br>
+
+			<h2 class="title">スクリーンショット</h2>
+			<input type="file" name="file[]" multiple="multiple"　accept="image/*"class="file""> <br>
+			<input type="submit" value="send" class="main-button">
+		</div>
+		<div class="right-box">
+			<h2 class="title">予測したこと。試してみたこと</h2>
+			<textarea name="challenge" placeholder="予測したこと。試してみたこと&#13;&#10;&#13;&#10;例&#13;&#10;関連付けを確認したけどよくわからなかった&#13;&#10;firebaseを確認してみたけど見方がよくわからない" class="textarea"></textarea><br>
+
+			<h2 class="title">参考にした記事</h2>
+			<input type="text" name="article" placeholder="参考にした記事（URL）" class="textarea"><br>
+
+			<h2 class="title">重要度</h2>
+			<input type="radio" name="rank" value="1" checked="checked" class="radio">1
+			<input type="radio" name="rank" value="2" class="radio">2
+			<input type="radio" name="rank" value="3" class="radio">3
+			<input type="radio" name="rank" value="4" class="radio">4
+			<input type="radio" name="rank" value="5" class="radio">5<br>
+
+			<input type="submit" value="send" class="main-button">
+		</div>
+	</form>
+</div>
